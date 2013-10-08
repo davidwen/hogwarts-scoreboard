@@ -1,0 +1,92 @@
+<head>
+  <title>Hogwarts</title>
+  <link href='http://fonts.googleapis.com/css?family=New+Rocker' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Joti+One' rel='stylesheet' type='text/css'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" type="image/png" href="/img/hp_crest.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/hp_crest.png">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+</head>
+
+<body>
+  <div id="mask"></div>
+  {{> main}}
+</body>
+
+<template name="main">
+  {{#if admin}}
+    {{> admin}}
+  {{else}}
+    {{> scores}}
+  {{/if}}
+</template>
+
+<template name="scores">
+  <div id="scores">
+    <div id="gryffindor-bar" class="score-bar">
+      <div class="bar-mask"></div>
+    </div>
+    <div id="slytherin-bar" class="score-bar">
+      <div class="bar-mask"></div>
+    </div>
+    <div id="ravenclaw-bar" class="score-bar">
+      <div class="bar-mask"></div>
+    </div>
+    <div id="hufflepuff-bar" class="score-bar">
+      <div class="bar-mask"></div>
+    </div>
+
+    <div id="gryffindor-score-container" class="score">
+      <div id="gryffindor-score"></div>
+      <div class="points">points</div>
+    </div>
+    <div id="slytherin-score-container" class="score">
+      <div id="slytherin-score"></div>
+      <div class="points">points</div>
+    </div>
+    <div id="ravenclaw-score-container" class="score">
+      <div id="ravenclaw-score"></div>
+      <div class="points">points</div>
+    </div>
+    <div id="hufflepuff-score-container" class="score">
+      <div id="hufflepuff-score"></div>
+      <div class="points">points</div>
+    </div>
+  </div>
+  <div id="footer">
+    <div id="gryffindor-img" class="img-container">
+      <img class="house-img" src="/img/gryffindor.png">
+    </div>
+    <div id="slytherin-img" class="img-container">
+      <img class="house-img" src="/img/slytherin.png">
+    </div>
+    <div id="ravenclaw-img" class="img-container">
+      <img class="house-img" src="/img/ravenclaw.png">
+    </div>
+    <div id="hufflepuff-img" class="img-container">
+      <img class="house-img" src="/img/hufflepuff.png">
+    </div>
+  </div>
+</template>
+
+<template name="admin">
+  <div id="admin">
+    <div id="score-input-container">
+      <input id="score-input" type="number">
+      <div>points to</div>
+    </div>
+    <button id="gryffindor-button" class="btn house-btn">
+      Gryffindor
+    </button>
+    <button id="slytherin-button" class="btn house-btn">
+      Slytherin
+    </button>
+    <button id="ravenclaw-button" class="btn house-btn">
+      Ravenclaw
+    </button>
+    <button id="hufflepuff-button" class="btn house-btn">
+      Hufflepuff
+    </button>
+  </div>
+</template>
