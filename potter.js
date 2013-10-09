@@ -14,14 +14,14 @@ if (Meteor.isClient) {
     }
   });
 
-  String.prototype.capitalize = function() { 
+  String.prototype.capitalize = function() {
      return this.toLowerCase().replace(/^.|\s\S/g, function(a) { return a.toUpperCase(); });
   };
 
   Deps.autorun(function() {
     var maxScore = 0;
     var houses = Houses.find().fetch();
-    if (!houses.length) {
+    if (!houses.length || Session.get(ADMIN)) {
       return;
     }
 
@@ -43,6 +43,8 @@ if (Meteor.isClient) {
 
     if (updatedHouse) {
       var updateText = updatedScore + ' Points to ' + updatedHouse.capitalize();
+      var snd = new Audio('http://dwen.me/ttsgateway.php?tl=en&q=' + updateText);
+      snd.play();
       var $alert = $('<div/>')
         .addClass('points-alert')
         .addClass(updatedHouse + '-alert')
