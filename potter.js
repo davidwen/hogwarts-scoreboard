@@ -90,6 +90,11 @@ if (Meteor.isClient) {
       $score.val('');
       if (score) {
         var house = Houses.findOne( {name: houseName} );
+        if (score > 100) {
+          score = 100;
+        } else if (score < -100) {
+          score = -100;
+        }
         Houses.update(house._id, {$inc: {score: score}});
       }
     }
